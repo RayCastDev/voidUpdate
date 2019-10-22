@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "voidUpdate", "voidUpdate\voidUpdate.csproj", "{7103A605-6CB0-4285-B25C-80FD31049231}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "voidUpdate.Data", "voidUpdate.Data\voidUpdate.Data.csproj", "{52C45C49-1E06-45AA-AA97-FCEE0133CD72}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7103A605-6CB0-4285-B25C-80FD31049231}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7103A605-6CB0-4285-B25C-80FD31049231}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7103A605-6CB0-4285-B25C-80FD31049231}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52C45C49-1E06-45AA-AA97-FCEE0133CD72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52C45C49-1E06-45AA-AA97-FCEE0133CD72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52C45C49-1E06-45AA-AA97-FCEE0133CD72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52C45C49-1E06-45AA-AA97-FCEE0133CD72}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
