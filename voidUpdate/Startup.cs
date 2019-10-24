@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using voidUpdate.Data;
 using voidUpdate.Data.Models;
+using voidUpdate.Service;
 
 namespace voidUpdate
 {
@@ -41,6 +42,8 @@ namespace voidUpdate
             services.AddDefaultIdentity<ApplicationUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+
+            services.AddScoped<IForum, ForumService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

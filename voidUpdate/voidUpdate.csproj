@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\voidUpdate.Data\voidUpdate.Data.csproj" />
+    <ProjectReference Include="..\voidUpdate.Service\voidUpdate.Service.csproj" />
   </ItemGroup>
 
 </Project>
