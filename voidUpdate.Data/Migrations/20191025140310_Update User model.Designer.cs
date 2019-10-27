@@ -10,8 +10,8 @@ using voidUpdate.Data;
 namespace voidUpdate.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191024142307_Add initial entity models")]
-    partial class Addinitialentitymodels
+    [Migration("20191025140310_Update User model")]
+    partial class UpdateUsermodel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -150,9 +150,13 @@ namespace voidUpdate.Data.Migrations
 
                     b.Property<bool>("EmailConfirmed");
 
+                    b.Property<bool>("IsActive");
+
                     b.Property<bool>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
+
+                    b.Property<DateTime>("MemberSince");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256);
@@ -165,6 +169,10 @@ namespace voidUpdate.Data.Migrations
                     b.Property<string>("PhoneNumber");
 
                     b.Property<bool>("PhoneNumberConfirmed");
+
+                    b.Property<string>("ProfileImageUrl");
+
+                    b.Property<int>("Rating");
 
                     b.Property<string>("SecurityStamp");
 

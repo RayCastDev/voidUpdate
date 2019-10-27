@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace voidUpdate.Data.Migrations
 {
-    public partial class Addinitialentitymodels : Migration
+    public partial class UpdateUsermodel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -40,7 +40,11 @@ namespace voidUpdate.Data.Migrations
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false)
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    Rating = table.Column<int>(nullable: false),
+                    ProfileImageUrl = table.Column<string>(nullable: true),
+                    MemberSince = table.Column<DateTime>(nullable: false),
+                    IsActive = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
