@@ -41,7 +41,11 @@ namespace voidUpdate.Service
 
         public IEnumerable<Post> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Posts
+                .Include(post => post.User)
+                .Include(post => post.Replies)
+                    .ThenInclude(r => r.User)
+                .Include(post => post.Forum);
         }
 
         public Post GetById(int id)
@@ -57,6 +61,11 @@ namespace voidUpdate.Service
         public IEnumerable<Post> GetFilteredPosts(string searchQuery)
         {
             throw new NotImplementedException();
+        }
+
+        public IEnumerable<Post> GetLatestPosts(int count)
+        {
+            return GetAll().OrderByDescending(post => post.Created).Take(count);
         }
 
         public IEnumerable<Post> GetPostsByForum(int id)
