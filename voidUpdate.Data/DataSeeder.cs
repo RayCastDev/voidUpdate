@@ -11,7 +11,7 @@ namespace voidUpdate.Data
 {
     public class DataSeeder
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         public DataSeeder(ApplicationDbContext context)
         {

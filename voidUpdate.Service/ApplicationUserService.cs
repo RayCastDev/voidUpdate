@@ -8,7 +8,7 @@ using voidUpdate.Data.Models;
 
 namespace voidUpdate.Service
 {
-    class ApplicationUserService : IApplicationUser
+    public class ApplicationUserService : IApplicationUser
     {
         private ApplicationDbContext _context;
 

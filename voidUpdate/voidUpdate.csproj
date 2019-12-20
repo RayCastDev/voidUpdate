@@ -16,4 +16,8 @@
     <ProjectReference Include="..\voidUpdate.Service\voidUpdate.Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Identity\Services\" />
+  </ItemGroup>
+
 </Project>

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using voidUpdate.Data;
 
 namespace voidUpdate.Service
 {
-    class UploadService
+    public class UploadService : IUpload
     {
     }
 }
