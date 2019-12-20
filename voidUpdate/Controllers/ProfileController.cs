@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 using voidUpdate.Data;
 using voidUpdate.Data.Models;
 using voidUpdate.Models.ApplicationUser;
@@ -38,5 +40,15 @@ namespace voidUpdate.Controllers
 
             return View(model);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> UploadProfileImage(IFormFile file)
+        {
+            var userId = _userManager.GetUserId(User);
+
+
+
+        }
+
     }
 }

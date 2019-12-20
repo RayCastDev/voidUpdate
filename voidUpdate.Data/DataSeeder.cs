@@ -18,7 +18,7 @@ namespace voidUpdate.Data
             _context = context;
         }
 
-        public Task SeedSuperUser()
+        public async Task SeedSuperUser()
         {
             var roleStore = new RoleStore<IdentityRole>(_context);
             var userStore = new UserStore<ApplicationUser>(_context);
@@ -45,7 +45,7 @@ namespace voidUpdate.Data
 
             if(!isAdminRole)
             {
-                roleStore.CreateAsync(new IdentityRole
+                await roleStore.CreateAsync(new IdentityRole
                 {
                     Name = "Admin",
                     NormalizedName = "admin"
@@ -56,13 +56,11 @@ namespace voidUpdate.Data
 
             if(!hasSuperUser)
             {
-                userStore.CreateAsync(user);
-                userStore.AddToRoleAsync(user, "Admin");
+                await userStore.CreateAsync(user);
+                await userStore.AddToRoleAsync(user, "admin");
             }
 
-            _context.SaveChangesAsync();
-
-            return Task.CompletedTask;
+            await _context.SaveChangesAsync();
         }
     }
 }
