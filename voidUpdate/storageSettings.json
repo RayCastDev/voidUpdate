@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "AzureStorageAccount": "DefaultEndpointsProtocol=https;AccountName=voidupdatestorage;AccountKey=0dRESIYZpb+DYlvxbWXILHzrxDBS3GaNBLbk1tTcWLHXivU22L7povZP8YM6kTPZ8HAu3vylEA8CDlsZDN+J4Q==;EndpointSuffix=core.windows.net"
+  }
+}

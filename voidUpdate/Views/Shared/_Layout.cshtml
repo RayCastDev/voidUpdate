@@ -1,7 +1,12 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @inject UserManager<voidUpdate.Data.Models.ApplicationUser> UserManager
 @inject SignInManager<voidUpdate.Data.Models.ApplicationUser> SignInManager
-
+@{ 
+    if(SignInManager.IsSignedIn(User))
+    {
+        var user = UserManager.FindByNameAsync(User.Identity.Name);
+    }
+}
 <!DOCTYPE html>
 <html>
 <head>

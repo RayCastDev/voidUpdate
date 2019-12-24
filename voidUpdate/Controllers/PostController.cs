@@ -15,14 +15,16 @@ namespace voidUpdate.Controllers
     {
         private readonly IPost _postService;
         private readonly IForum _forumService;
+        private readonly IApplicationUser _userService;
 
         private static UserManager<ApplicationUser> _userManager;
 
-        public PostController(IPost postService, IForum forumService, UserManager<ApplicationUser> userManager)
+        public PostController(IPost postService, IForum forumService, UserManager<ApplicationUser> userManager, IApplicationUser userService)
         {
             _postService = postService;
             _forumService = forumService;
             _userManager = userManager;
+            _userService = userService;
         }
 
         public IActionResult Index(int id)
@@ -73,7 +75,7 @@ namespace voidUpdate.Controllers
             var post = BuildPost(model, user);
 
             _postService.Add(post).Wait();
-            //TODO: Implement User Rating Management
+            await _userService.UpdateUserRating(userId, typeof(Post));
 
             return RedirectToAction("Index","Post",new { id = post.Id });
         }
