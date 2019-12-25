@@ -43,6 +43,13 @@ namespace voidUpdate
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
 
+            services.ConfigureApplicationCookie(opt=>
+            {
+                opt.AccessDeniedPath = "/Identity/Account/AccessDenied";
+                opt.LoginPath = "/Identity/Account/Login";
+            });
+
+
             services.AddScoped<IForum, ForumService>();
             services.AddScoped<IPost, PostService>();
             services.AddScoped<IUpload, UploadService>();
@@ -61,6 +68,7 @@ namespace voidUpdate
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
+                app.UseBrowserLink();
             }
             else
             {

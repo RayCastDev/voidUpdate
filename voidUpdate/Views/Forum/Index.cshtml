@@ -1,20 +1,67 @@
 ﻿@model voidUpdate.Models.Forum.ForumIndexModel
 
-<h1>Forums</h1>
-<table class="table table-hover" id="forumIndexTable">
-    <tbody>
-        @foreach (var forum in Model.ForumList)
-        {
-        <tr>
-            <td>
-                <a asp-controller="Forum" asp-action="Topic" asp-route-id="@forum.Id">
-                    @forum.Name
-                </a>               
-            </td>
-            <td>
-                @forum.Discription
-            </td>
-        </tr>
-        }
-    </tbody>
-</table>
+
+
+
+
+<div class="container body-content">
+    <div class="row sectionHeader">
+        <div class="sectionHeading">
+            Browse Forums
+        </div>
+        <div class="sectionDescription">
+            <p>
+                Please read the Forum Guidlines before creating a new post.
+                @if(Context.User.Identity.IsAuthenticated)
+                {
+                    <span>You must be a <a asp-area="Identity" asp-page="/Account/Register">registered member</a> to create a new post</span>
+                }
+            </p>
+        </div>
+    </div>
+    <div class="row" id="forumIndexContent">
+        <table class="table table-hover" id="forumIndexTable">
+            <tbody>
+                @foreach (var forum in Model.ForumList)
+                {
+                    <tr>
+                        <td>
+                            <div class="forumLogo" style="background-image: url(@forum.ImageUrl); background size: 100%"></div>
+                            <div class="forumData">
+                                <div class="forumTitle">
+                                    <a asp-controller="Forum" asp-action="Topic" asp-route-id="@forum.Id">
+                                        @forum.Name
+                                    </a>
+                                </div>
+                                <div class="forumSubTitle">
+                                    @if(forum.HasRecentPost)
+                                    {
+                                        <div class="hasRecentPost">Hot</div>
+                                    }
+                                </div>
+                            </div>                           
+                        </td>
+                        <td>
+                           <div class="forumPostCount">
+                               @forum.NumberOfPosts Posts
+                           </div>
+                            <div class="forumMemberCount">
+                                @forum.NumberOfUsers Users
+                            </div>
+                        </td>
+                        <td>
+                            <div class="forumDescription">
+                                @forum.Discription
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+

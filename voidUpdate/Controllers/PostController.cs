@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using voidUpdate.Data;
@@ -10,7 +11,7 @@ using voidUpdate.Models.Post;
 using voidUpdate.Models.Reply;
 
 namespace voidUpdate.Controllers
-{
+{   
     public class PostController : Controller
     {
         private readonly IPost _postService;
@@ -50,8 +51,8 @@ namespace voidUpdate.Controllers
             return View(model);
         }
 
-      
 
+        [Authorize]
         public IActionResult Create(int id)
         {
             var forum = _forumService.GetById(id);
@@ -68,6 +69,7 @@ namespace voidUpdate.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> AddPost(NewPostModel model)
         {
             var userId = _userManager.GetUserId(User);

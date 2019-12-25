@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -35,12 +36,16 @@ namespace voidUpdate.Controllers
                 .Select(forum => new ForumListingModel {
                     Id = forum.Id,
                     Name = forum.Title,
-                    Discription = forum.Description
+                    Discription = forum.Description,
+                    NumberOfPosts = forum.Posts?.Count() ?? 0,
+                    NumberOfUsers = _forumService.GetActiveUsers(forum.Id).Count(),
+                    ImageUrl = forum.ImageUrl,
+                    HasRecentPost = _forumService.HasRecentPost(forum.Id)
             });
 
             var model = new ForumIndexModel
             {
-                ForumList = forums
+                ForumList = forums.OrderBy(f => f.Name)
             };
 
             
@@ -82,6 +87,7 @@ namespace voidUpdate.Controllers
             return RedirectToAction("Topic", new {id, searchQuery});
         }
 
+        [Authorize(Roles ="Admin")]
         public IActionResult Create()
         {
             var model = new AddForumModel();
@@ -89,6 +95,7 @@ namespace voidUpdate.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddForum(AddForumModel model)
         {
             var imageUri = "/images/users/default.png";
