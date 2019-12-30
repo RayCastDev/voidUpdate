@@ -68,9 +68,10 @@ namespace voidUpdate.Service
 
         public IEnumerable<Post> GetFilteredPosts(string searchQuery)
         {
+            var normalized = searchQuery.ToLower();
             return GetAll().Where(post
-                => post.Title.Contains(searchQuery)
-                || post.Content.Contains(searchQuery));            
+                => post.Title.ToLower().Contains(normalized)
+                || post.Content.ToLower().Contains(normalized));            
         }
 
         public IEnumerable<Post> GetLatestPosts(int count)
