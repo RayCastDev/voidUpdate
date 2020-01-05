@@ -1,14 +1,5 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
 for details on configuring this project to bundle and minify static web assets. */
-body {
-    padding: 50px 0 20px 0;
-    background-color: #EEE;
-    background-image: url("/images/theme/bg-01.jpg");
-    background-size:100%;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-}
 
 .navbar{
     box-shadow: 0 5px 4px -6px #000;

@@ -1,0 +1,448 @@
+﻿html,
+body {
+    font-family: 'Odibee Sans';
+    color: #36342F;
+    /*margin-bottom: 35px;*/
+    background-color: #050606;
+}
+
+/*----bootstrap overide-----*/
+
+.container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+
+/*-----------------------*/
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+#home {
+    background: url(/images/theme/index_back.jpg) no-repeat 50% 50%;
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    padding-bottom: 70px;
+}
+
+
+.indexTitle {
+    color: white;
+    font-size: 4.4em;
+}
+
+.indexSubTitle {
+    color: gray;
+    font-size: 1.4em;
+}
+
+.recentPost {
+    margin: 20px;
+    max-width: 700px;
+}
+
+    .recentPost ul {
+        padding: 0;
+    }
+
+        .recentPost ul li {
+            border: 2px solid #a3a3a3;
+            border-radius: 2px;
+            height: 70px;
+            padding: 7px;
+            list-style: none;
+            background: #d1d1d1;
+            margin: 10px 0;
+            box-shadow: 0px 8px 5px -4px rgba(0,0,0,0.6);
+        }
+
+            .recentPost ul li:hover {
+                background: #f5f5f5;
+                transition: background 0.5s linear;
+            }
+/*section-1*/
+.section-1 {
+    min-height: 100%;
+    background: linear-gradient(#544845,#374044);
+}
+
+/*HEADER*/
+
+.header {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+    z-index: 1000;
+    background: rgba(25, 25, 25, 1);
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+}
+
+.headerAbsolute{
+    position: absolute;
+}
+
+.header_inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.navProfileImage {
+    display: inline-block;
+    float: left;
+    height: 50px;
+    width: 50px;
+    margin: 10px 50px;
+    background-image: url(../images/user1.png);
+    background-size: 100%;
+    border-radius: 50px;
+    background-color: black;
+    border: 2px solid #999;
+}
+
+.navUserName {
+    display: flex;
+}
+
+    .navUserName a {
+        text-decoration: none;
+        color: #999;
+        font-family: 'Alfa Slab One';
+        letter-spacing: 1px;
+        font-size: 1.1em;
+        line-height: 70px;
+    }
+
+        .navUserName a:hover {
+            color: white;
+            transition: color .2s linear;
+        }
+/*NAV*/
+
+
+.header-nav {
+    font-size: 1.1em;
+    font-family: 'Alfa Slab One';
+    margin-right: 20px;
+}
+
+    .header-nav a, button {
+        display: inline-block;
+        margin: 0 10px;
+        color: #999;
+        text-decoration: none;
+        line-height: 70px;
+    }
+
+    .header-nav button {
+        background: none !important;
+        border: none;
+        cursor: pointer;
+        outline:none;
+    }
+
+        .header-nav a:hover, button:hover {
+            color: white;
+            transition: color .2s linear;
+        }
+
+/* INDEX PAGE*/
+
+.indexSearch {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+    .indexSearch input,
+    .indexSearch button {
+        vertical-align: middle;
+        border: none;
+        outline: none;
+        border-radius: 3px;
+    }
+
+    .indexSearch input {
+        width: 80%;
+        height: 50px;
+        background: #262123;
+        padding-left: 15px;
+        color: white;
+        font-family: 'Odibee Sans';
+        font-size: 1.5em;
+    }
+
+    .indexSearch button {
+        height: 50px;
+        display: inline-block;
+        width: 50px;
+        cursor: pointer;
+        background: #262123;
+    }
+
+    .indexSearch button {
+        background-image: url(/images/theme/ui_elements/arrow.png);
+        background-size: 80%;
+        background-repeat: no-repeat;
+        background-position: center
+    }
+
+
+
+.forumLogo {
+    float: left;
+    margin-right: 20px;
+    width: 53px;
+    height: 53px;
+    background-size: 100%;
+    background-image: url(../images/cs.png)
+}
+
+.postTitle {
+    font-family: 'Odibee Sans';
+    font-size: 1.2em;
+}
+
+    .postTitle a {
+        text-decoration: none;
+        color: rgba(25, 25, 25, 1);
+    }
+
+.postSubTitle {
+    color: #666;
+    font-size: 0.6em;
+    font-family: 'Roboto Mono'
+}
+
+
+/*MOBILE STYLE*/
+
+@media only screen and (max-width: 767px) {
+    .header {
+        display: none;
+    }
+
+    .section-2 .numbers .rect {
+        width: 8rem;
+        height: 7rem;
+    }
+
+        .section-2 .numbers .rect h1 {
+            font-size: 3.5rem;
+        }
+
+        .section-2 .numbers .rect p {
+            font-size: 1rem;
+        }
+
+    .section-2 .cover .content {
+        padding-top: 2vmin
+    }
+
+        .section-2 .cover .content p {
+            font-size: 1.3rem;
+        }
+}
+
+.post-card {
+    height: 120px;
+    position: relative;
+    max-width: 700px;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 3px 7px -1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.4%;
+    background: transparent;
+    line-height: 1.4;
+    font-family: 'Odibee Sans';
+    border-radius: 3px;
+    overflow: hidden;
+    z-index: 0;
+    border: 2px solid black;
+    box-shadow: -1px 15px 30px -12px black;
+}
+
+    .post-card a {
+        color: inherit;
+    }
+
+        .post-card a:hover {
+            color: #5ad67d;
+        }
+
+    .post-card:hover .forumImage {
+        -webkit-transform: scale(1.3) rotate(3deg);
+        transform: scale(1.3) rotate(3deg);
+    }
+
+    .post-card .meta {
+        min-width: 120px;
+        position: relative;
+        z-index: 0;
+    }
+
+    .post-card .forumImage {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-size: cover;
+        background-position: center;
+        transition: -webkit-transform .2s;
+        transition: transform .2s;
+        transition: transform .2s, -webkit-transform .2s;
+    }
+
+    .post-card .details,
+    .post-card .details ul {
+        margin: auto;
+        padding: 0;
+        list-style: none;
+    }
+
+    .post-card .details {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: -100%;
+        margin: auto;
+        transition: left .2s;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        padding: 10px;
+        width: 100%;
+        font-size: .9rem;
+    }
+
+        .post-card .details ul li {
+            display: inline-block;
+        }
+
+    .post-card .description {
+        width: 100%;
+        padding: 0.3rem;
+        background-color: #aa9893;
+        position: relative;
+        z-index: 1;
+    }
+
+        .post-card .description h1 {
+            line-height: 1;
+            margin: 0;
+            font-size: 1.7rem;
+        }
+
+        .post-card .description .postRating {
+            float: left;
+            margin-right: 1rem;
+        }
+
+        .post-card .description h2 {
+            font-size: 1rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            color: white;
+            margin-top: 5px;
+        }
+
+        .post-card .description .read-more {
+            text-align: right;
+        }
+
+            .post-card .description .read-more a {
+                color: black;
+                display: inline-block;
+                position: relative;
+            }
+
+
+    .post-card p {
+        position: relative;
+    }
+
+        .post-card p:first-of-type:before {
+            content: "";
+            position: absolute;
+            height: 2px;
+            background: gray;
+            width: 100%;
+            border-radius: 3px;
+        }
+
+    .post-card:hover .details {
+        left: 0%;
+    }
+
+.topPostContainer .card {
+    width: auto;
+    border: 2px solid black;
+    background-color: #aa9c99;
+    box-shadow: -1px 15px 30px -12px black;
+    margin: 0 auto;
+}
+
+.cover {
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+    width: 100%;
+    height: 55vmin;
+    background: url(/images/theme/cover.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+    .cover .content {
+        background: rgba(0,0,0,0.5);
+        height: 100%;
+        width: 100%;
+        padding: 19vmin 5vmin;
+    }
+
+        .cover .content > h1 {
+            font-size: 6vmin;
+            color: whitesmoke;
+        }
+
+        .cover .content > p {
+            font-size: 2vmin;
+            color: #e5e5e5;
+        }
+
+.numbers .rect {
+    position: relative;
+    z-index: 1;
+    background: #636C6F;
+    width: 17rem;
+    height: 12rem;
+    padding-top: 3.5vmin;
+    margin: 1rem;
+    border-radius: 0.5em;
+}
+
+.numbers {
+    margin-top: -15vmin;
+}
+
+    .numbers .rect h1 {
+        margin: 0;
+        font-size: 5rem;
+        color: whitesmoke;
+    }
+
+    .numbers .rect p {
+        font-size: 2rem;
+        color: whitesmoke;
+    }

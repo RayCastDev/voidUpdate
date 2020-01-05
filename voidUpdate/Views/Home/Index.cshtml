@@ -1,58 +1,222 @@
 ﻿@model voidUpdate.Models.Home.HomeIndexModel
 
-<div class="container body-content">
-    <div class="row frontPageSplash">
-        <div class="col-md-8 frontPageLearn">
-            <div class="frontPageHeading">
-                Learn, Collaborate, Share Knowledge
-            </div>
-            <p class="frontPageSubHeading">Best Forum</p>
-            <div>
+
+<div class="container-fluid" id="home">
+    <div class="row h-100 align-items-center">
+        <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+            <h1 class="indexTitle">
+                void Update { }
+            </h1>
+            <h3 class="indexSubTitle">
+                Try it. Make a mistake. Reach.
+            </h3>
+            <br>
+            <div class="indexSearch">
                 <form asp-controller="Search" asp-action="Search" method="post">
-                    <input asp-for="SearchQuery" type="text" class="homeSearch" placeholder="Seqrch..."/>
+                    <input asp-for="SearchQuery" type="text" class="homeSearch" placeholder="Seqrch..." />
+                    <button type=submit></button>
                 </form>
             </div>
+            <button class="btn tn btn-primary">
+                GO TO FORUMS
+            </button>
+            <button class="btn tn btn-se">
+                GO TO RECENT POSTS
+            </button>
         </div>
-        <div class="col-md-8"></div>
     </div>
-    <div class="row frontPageContent">
-        <h3 id="latestPosts"></h3>
-        <table class="table table-hover" id="latestPostsTable">
-            <tbody>
-                @foreach(var post in Model.LatestPosts)
+</div>
+
+<section class="section-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-12 order-2">
+                @foreach (var post in Model.LatestPosts)
                 {
-                    <tr>
-                        <td>
-                            <div class="forumLogo" style="background-image: url(@post.Forum.ImageUrl);">
-                            </div>
-                            <div class="postTitle">
+                    <div class="post-card">
+                        <div class="meta">
+                            <div class="forumImage" style="background-image: url(@post.Forum.ImageUrl);"></div>
+                            <ul class="details">
+                                <li class="author">
+                                    @{
+                                        if (post.RepliesCount == 1)
+                                        {
+                                            <span>@post.RepliesCount Reply</span>
+                                        }
+                                        else if (post.RepliesCount == 0)
+                                        {
+                                            <span>No Replies</span>
+                                        }
+                                        else
+                                        {
+                                            <span>@post.RepliesCount Replies</span>
+                                        }
+                                    }
+
+                                </li>
+                                <li class="date">@post.DatePosted</li>
+                                <li class="tags">
+                                    <ul>
+                                        <li><a href="#">Learn</a></li>
+                                        <li><a href="#">Code</a></li>
+                                        <li><a href="#">HTML</a></li>
+                                        <li><a href="#">CSS</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="description">
+                            <h1>
                                 <a asp-controller="Post" asp-action="Index" asp-route-id="@post.Id">
                                     @post.Title
                                 </a>
-                            </div>
-                            <div class="postSubTitle">
-                                @if (post.RepliesCount == 1)
-                                {
-                                    <span>@post.RepliesCount Reply</span>
-                                }
-                                @if (post.RepliesCount == 0)
-                                {
-                                    <span>No Replies</span>
-                                }
-                                else
-                                {
-                                    <span>@post.RepliesCount Replies</span>
-                                }      
-                                <span class="postUser">
-                                    <a asp-controller="Profile" asp-action="Detail" asp-route-id="@post.AuthorId">
-                                        @post.AuthorName
-                                    </a>
-                                </span>
-                            </div>
-                        </td>
-                    </tr>
+                            </h1>
+                            <h2 class="postRating">Post Rating: 4</h2>
+                            <h2>
+                                <a asp-controller="Profile" asp-action="Detail" asp-route-id="@post.AuthorId">
+                                   Author: @post.AuthorName
+                                </a>
+                            </h2>
+                            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. consectetur adipisicing elit. consectetur adipisicing elit. consectetur adipisicing elit.</p>
+                        </div>
+                    </div>
                 }
-            </tbody>
-        </table>
+
+            </div>
+
+            <div class="col-md-4 col-sm-12">
+                <div class="topPostContainer">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="float-left mr-3"><span class="badge badge-dark">Top day.</span></h5>
+                            <h5>Rating: 100</h5>
+                        </div>
+                        <img class="card-img-top" src="images/dev.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="#">Card title</a>
+                            </h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+
+                        <div class="card-body">
+                            <p class="card-text">
+                                Author:
+                                <a href="#">RayCAst</a>
+                            </p>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card" style="margin-bottom: 20px;">
+                        <div class="card-header">
+                            <h5 class="float-left mr-3"><span class="badge badge-dark">Top week.</span></h5>
+                            <h5>Rating: 1000</h5>
+                        </div>
+                        <img class="card-img-top" src="images/dev.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="#">Card title</a>
+                            </h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+
+                        <div class="card-body">
+                            <p class="card-text">
+                                Author:
+                                <a href="#">RayCAst</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
-</div>
+</section>
+
+<section class="section-2 container-fluid p-0">
+    <div class="cover">
+        <div class="content text-center">
+            <h1>Forum Stats</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis pariatur consectetur doloremque veniam nulla aliquam quibusdam voluptates sed maxime accusantium at nostrum nesciunt, quis expedita molestiae optio inventore eveniet a.</p>
+        </div>
+    </div>
+    <div class="container-fluid text-center">
+        <div class="numbers d-flex flex-md-row flex-wrap justify-content-center">
+            <div class="rect">
+                <h1>23</h1>
+                <p>Posts</p>
+            </div>
+            <div class="rect">
+                <h1>23</h1>
+                <p>Users</p>
+            </div>
+            <div class="rect">
+                <h1>23</h1>
+                <p>Replies</p>
+            </div>
+            <div class="rect">
+                <h1>23</h1>
+                <p>Forums</p>
+            </div>
+        </div>
+    </div>
+</section>
+@*<div class="container body-content">
+        <div class="row frontPageSplash">
+            <div class="col-md-8 frontPageLearn">
+                <div class="frontPageHeading">
+                    Learn, Collaborate, Share Knowledge
+                </div>
+                <p class="frontPageSubHeading">Best Forum</p>
+                <div>
+                    <form asp-controller="Search" asp-action="Search" method="post">
+                        <input asp-for="SearchQuery" type="text" class="homeSearch" placeholder="Seqrch..."/>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-8"></div>
+        </div>
+        <div class="row frontPageContent">
+            <h3 id="latestPosts"></h3>
+            <table class="table table-hover" id="latestPostsTable">
+                <tbody>
+                    @foreach(var post in Model.LatestPosts)
+                    {
+                        <tr>
+                            <td>
+                                <div class="forumLogo" style="background-image: url(@post.Forum.ImageUrl);">
+                                </div>
+                                <div class="postTitle">
+                                    <a asp-controller="Post" asp-action="Index" asp-route-id="@post.Id">
+                                        @post.Title
+                                    </a>
+                                </div>
+                                <div class="postSubTitle">
+                                    @if (post.RepliesCount == 1)
+                                    {
+                                        <span>@post.RepliesCount Reply</span>
+                                    }
+                                    @if (post.RepliesCount == 0)
+                                    {
+                                        <span>No Replies</span>
+                                    }
+                                    else
+                                    {
+                                        <span>@post.RepliesCount Replies</span>
+                                    }
+                                    <span class="postUser">
+                                        <a asp-controller="Profile" asp-action="Detail" asp-route-id="@post.AuthorId">
+                                            @post.AuthorName
+                                        </a>
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>*@
+
+<script src="~/js/sticky.js"></script>

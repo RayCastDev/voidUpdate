@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using voidUpdate.Data;
 using voidUpdate.Data.Models;
 using voidUpdate.Service;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace voidUpdate
 {
@@ -39,8 +40,9 @@ namespace voidUpdate
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddIdentity<ApplicationUser, IdentityRole>(/*config => { config.SignIn.RequireConfirmedEmail = false; }*/)
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
 
 
             services.ConfigureApplicationCookie(opt=>
@@ -54,6 +56,9 @@ namespace voidUpdate
             services.AddScoped<IPost, PostService>();
             services.AddScoped<IUpload, UploadService>();
             services.AddScoped<IApplicationUser, ApplicationUserService>();
+
+
+            services.AddTransient<IEmailSender, EmailService>();
             services.AddSingleton(Configuration);
 
             services.AddTransient<DataSeeder>();

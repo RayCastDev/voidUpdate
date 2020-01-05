@@ -5,18 +5,21 @@
     if(SignInManager.IsSignedIn(User))
     {
         var user = UserManager.FindByNameAsync(User.Identity.Name);
-    }
+    }   
 }
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@ViewData["Title"] - voidUpdate</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
+        @*<link rel="stylesheet" href="~/css/site.css" />*@
+        <link rel="stylesheet" href="~/css/main.css" />
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -24,11 +27,55 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
-    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Odibee+Sans|Alfa+Slab+One|Roboto+Mono&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <header class="header">
+        <div class="header_container">
+            <div class="header_inner">
+                <div>
+                    @if (SignInManager.IsSignedIn(User))
+                    {              
+                        var user = UserManager.FindByNameAsync(User.Identity.Name);               
+                        <div class="navProfileImage" style="background-image: url(@user.Result.ProfileImageUrl)"></div>
+                        <div class="navUserName">
+                            <a asp-controller="Profile" asp-action="Detail" asp-route-id="@user.Result.Id">@user.Result.UserName</a>
+                        </div>
+                    }
+                </div>
+                <nav class="header-nav">
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-controller="Forum" asp-action="Create">Create Forum</a>
+                            <a asp-controller="Profile" asp-action="Index">View Users</a>
+                        }
+                    }
+                    <a asp-controller="Forum" asp-action="Index">Forums</a>
+                    <a href="#">About</a>
+                    <a href="#">Assets</a>
+                    @if (!SignInManager.IsSignedIn(User))
+                    {
+                        <a asp-area="Identity" asp-page="/Account/Login">Sign In</a>
+                        <a asp-area="Identity" asp-page="/Account/Register">Register</a>
+                    }
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <form asp-area="Identity" asp-page="/Account/Logout" method="post" class="float-right">
+                                    <button type="submit">
+                                        Sing Out
+                                    </button>
+                        </form>
+                    }
+                </nav>
+            </div>
+        </div>
+    </header>
+
+
+    @*<nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand navLogo" asp-controller="Home" asp-action="Index"></a>
@@ -76,30 +123,27 @@
                     </form>
                 }
 
-                @*<partial name="_LoginPartial" />*@
+                <partial name="_LoginPartial" />
             </div>
         </div>
-    </nav>
+    </nav>*@
 
     <partial name="_CookieConsentPartial" />
 
-    <div class="container body-content">
-        @RenderBody()       
-    </div>
+    @RenderBody()
 
-    <environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
+    <environment include="Development">  
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.4.1.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
                 asp-fallback-test="window.jQuery"
                 crossorigin="anonymous"
                 integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
         </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/4.4.1/bootstrap.min.js"
                 asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
                 crossorigin="anonymous"
