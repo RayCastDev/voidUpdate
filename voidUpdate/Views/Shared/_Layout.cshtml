@@ -35,6 +35,9 @@
         <div class="header_container">
             <div class="header_inner">
                 <div>
+                    <a class="forumLogo" asp-controller="Home" asp-action="Index"></a>
+                </div>
+                <div>
                     @if (SignInManager.IsSignedIn(User))
                     {              
                         var user = UserManager.FindByNameAsync(User.Identity.Name);               
