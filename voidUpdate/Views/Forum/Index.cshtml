@@ -1,10 +1,38 @@
 ﻿@model voidUpdate.Models.Forum.ForumIndexModel
 
 
+<div class="container forumContainer">
+    @foreach (var forum in Model.ForumList)
+    {
+    <div class="forumCard">
+        <div class="cardImageContainer">
+            <div class="forumCardLogo" style="background-image: url(@forum.ImageUrl)"></div>
+        </div>     
+        <div class="forumBodyContent">
+            <div class="forumCardHeader">
+                @if (forum.HasRecentPost)
+                {
+                    <span class="hasRecentPost">Hot</span>
+                }
+                @forum.Name
+            </div>
+            <div class="forumCardBody">           
+                <p class="card-text">@forum.Discription</p>             
+            </div>
+            <div class="forumCardFooter">
+                <a asp-controller="Forum" asp-action="Topic" asp-route-id="@forum.Id" class="forumCardButton">
+                    Go to forum
+                </a>
+                <span>Number of Posts: @forum.NumberOfPosts</span>
+                <span style="margin-left:20px;">Number of Users: @forum.NumberOfUsers</span>              
+            </div>
+        </div>       
+    </div>
+    }
+</div>
 
 
-
-<div class="container body-content">
+@*<div class="container body-content">
     <div class="row sectionHeader">
         <div class="sectionHeading">
             Browse Forums
@@ -59,7 +87,7 @@
             </tbody>
         </table>
     </div>
-</div>
+</div>*@
 
 
 
